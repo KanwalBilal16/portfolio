@@ -1,0 +1,16 @@
+<svg viewBox="158 44 360 86" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kanwal logo">
+  <defs>
+    <linearGradient id="tg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="55%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(168,54)">
+    <rect x="6" y="6" width="48" height="48" rx="11" transform="rotate(45 30 30)" fill="#60a5fa" fill-opacity="0.6"/>
+    <rect x="26" y="6" width="48" height="48" rx="11" transform="rotate(45 50 30)" fill="#5eead4" fill-opacity="0.95"/>
+  </g>
+
+  <text x="270" y="108" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-style="italic" font-weight="700" fill="url(#tg)" letter-spacing="1">Kanwal</text>
+</svg>
