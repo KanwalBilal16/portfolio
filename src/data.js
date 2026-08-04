@@ -7,7 +7,7 @@ export const profile = {
   email: "kanwalzubair717@gmail.com",
   phone: "+92 326 0144253",
   phoneRaw: "923260144253", // for tel: and wa.me links
-  photo: "/profile.jpg",  
+  photo: "/self.png",  
   logo: "/kanwal-logo.svg",  // ← replace public/logo.png with your own logo
   lead:
     "I build scalable, secure, and AI-powered web applications using React, Next.js, Laravel and Python—turning ideas into fast, modern, and production-ready digital experiences.",

@@ -1045,6 +1045,7 @@ footer {
   display: block;
   aspect-ratio: 4/5;
   object-fit: cover;
+  object-position: 85% center;
   background: var(--surface-2);
 }
 .badge-avail {
