@@ -19,7 +19,7 @@ export const profile = {
 }
 
 export const stats = [
-  { num: "4+", lbl: "Years of Experience" },
+  { num: "4", lbl: "Years of Experience" },
   { num: "25+", lbl: "Automations Delivered" },
   { num: "15+", lbl: "Clients Served" },
   { num: "15h", lbl: "Weekly Hours Saved" },
@@ -60,9 +60,9 @@ export const moreTools = [
 // screenshot instead of the gradient + code badge. Cards without an image
 // automatically fall back to the gradient badge.
 export const projects = [
-  { code: "AO", grad: "linear-gradient(135deg,#312E81,#6366F1)", tags: ["LangGraph", "Temporal", "FastAPI", "Multi-Agent"], title: "AI Agent for Executive Outreach", text: "Event-driven multi-agent pipeline running CEO/B2B outreach end to end — lead discovery, waterfall email verification, LLM signal extraction, regional copy localization (EN/ES/PT/DE), human-in-the-loop approval, and reply-intent classification across concurrent campaigns." },
-  { code: "LQ", grad: "linear-gradient(135deg,#4C1D95,#8B5CF6)", tags: ["n8n", "LLM", "CRM", "Slack"], title: "AI Lead Qualification & CRM Automation", text: "Captures inbound leads, enriches them, scores buying intent with an LLM, and syncs qualified prospects into the CRM with instant Slack alerts to the rep — replacing manual lead triage." },
-  { code: "LI", grad: "linear-gradient(135deg,#1E1B4B,#4F46E5)", tags: ["n8n", "LLM", "Automation", "Analytics"], title: "LinkedIn Content Automation", text: "End-to-end pipeline that researches trending topics, generates on-brand posts with LLMs, then schedules, publishes, and logs engagement metrics back for review." },
+  { code: "AO", image: "/agent-arch.png", tags: ["LangGraph", "Temporal", "FastAPI", "Multi-Agent"], title: "AI Agent for Executive Outreach", text: "Event-driven multi-agent pipeline running CEO/B2B outreach end to end — lead discovery, waterfall email verification, LLM signal extraction, regional copy localization (EN/ES/PT/DE), human-in-the-loop approval, and reply-intent classification across concurrent campaigns." },
+  { code: "LQ",image:"/lead-qual.png", grad: "linear-gradient(135deg,#4C1D95,#8B5CF6)", tags: ["n8n", "LLM", "CRM", "Slack"], title: "AI Lead Qualification & CRM Automation", text: "Captures inbound leads, enriches them, scores buying intent with an LLM, and syncs qualified prospects into the CRM with instant Slack alerts to the rep — replacing manual lead triage." },
+  { code: "LI",image:"/linkedin-auto.png", grad: "linear-gradient(135deg,#1E1B4B,#4F46E5)", tags: ["n8n", "LLM", "Automation", "Analytics"], title: "LinkedIn Content Automation", text: "End-to-end pipeline that researches trending topics, generates on-brand posts with LLMs, then schedules, publishes, and logs engagement metrics back for review." },
   { code: "SW", image: "/salo.png", grad: "linear-gradient(135deg,#1E3A8A,#2563EB)", tags: ["Laravel", "POS", "AJAX"], title: "Salveowell", text: "Admin panel & POS order-management system with role-based access and live AJAX workflows." },
   { code: "OA", image: "/ohana.png", grad: "linear-gradient(135deg,#0E7490,#22D3EE)", tags: ["React", "Bilingual", "Dashboard"], title: "Ohana Africa", text: "Bilingual (French / English) group-savings platform with custom dashboard components." },
   { code: "AI", image: "/poem.png", grad: "linear-gradient(135deg,#3730A3,#6366F1)", tags: ["AI", "React", "LLM API"], title: "AI Poem Generator", text: "AI-powered web app that generates custom poems from user prompts through a clean, interactive interface." },
