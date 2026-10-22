@@ -55,10 +55,6 @@ export const moreTools = [
   "Git", "GitHub", "Postman", "Swagger", "Agile / Scrum",
 ]
 
-// Slate / Blue / Cyan friendly gradients for each project card.
-// Add an `image: "/your-screenshot.png"` (file goes in /public) to show a real
-// screenshot instead of the gradient + code badge. Cards without an image
-// automatically fall back to the gradient badge.
 export const projects = [
   {
     code: "AO",
