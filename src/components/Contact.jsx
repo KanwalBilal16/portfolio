@@ -3,11 +3,37 @@ import { profile } from '../data'
 import { MailIcon, PhoneIcon, PinIcon } from './Icons'
 
 // ── Contact form delivery ─────────────────────────────────────────────
-// Submissions are delivered to your inbox via Web3Forms (free, no backend).
-// Setup: go to https://web3forms.com → enter your email (kanwalzubair717@gmail.com)
-// → they email you an Access Key → paste it below. That's the only step.
-// Every time a visitor submits, you get an email automatically.
-const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE'
+// Submissions are emailed to profile.email — no backend needed.
+// Default: FormSubmit (https://formsubmit.co). The very first submission sends
+// an "Activate Form" email to profile.email; click it once and every message
+// after that lands in your inbox.
+// Optional: set VITE_WEB3FORMS_KEY in a .env file to use Web3Forms instead.
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY
+// FormSubmit alias for profile.email (from the activation email) — keeps the address out of the page source.
+const FORMSUBMIT_ID = 'eb1b2c959573fd800e54754011a5690c'
+
+async function sendMessage({ name, email, msg }) {
+  const headers = { 'Content-Type': 'application/json', Accept: 'application/json' }
+  const subject = `Project inquiry from ${name}`
+
+  if (WEB3FORMS_ACCESS_KEY) {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ access_key: WEB3FORMS_ACCESS_KEY, subject, from_name: name, name, email, message: msg }),
+    })
+    const data = await res.json()
+    return data.success === true
+  }
+
+  const res = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_ID}`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({ _subject: subject, _template: 'table', _captcha: 'false', name, email, message: msg }),
+  })
+  const data = await res.json()
+  return res.ok && String(data.success) === 'true'
+}
 
 export default function Contact({ showHead = true }) {
   const [form, setForm] = useState({ name: '', email: '', msg: '' })
@@ -19,20 +45,7 @@ export default function Contact({ showHead = true }) {
     e.preventDefault()
     setStatus('sending')
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `Project inquiry from ${form.name}`,
-          from_name: form.name,
-          name: form.name,
-          email: form.email,
-          message: form.msg,
-        }),
-      })
-      const data = await res.json()
-      if (data.success) {
+      if (await sendMessage(form)) {
         setStatus('sent')
         setForm({ name: '', email: '', msg: '' })
       } else {
