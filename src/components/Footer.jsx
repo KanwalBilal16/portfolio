@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="foot-grid">
           <div className="foot-brand">
             <div className="logo"><span className="br">&lt;</span>KB<span className="br">/&gt;</span> &nbsp;{profile.name}</div>
-            <p>Full Stack Web Developer building scalable, secure web applications with care and precision.</p>
+            <p>AI Automation Engineer &amp; Full Stack Developer building AI agents, automations and the web apps around them.</p>
           </div>
           <div className="foot-links">
             <h4>Navigate</h4>
@@ -21,6 +21,8 @@ export default function Footer() {
             <a href={`mailto:${profile.email}`}>{profile.email}</a>
             <a href={`tel:${profile.phone.replace(/\s/g, '')}`}>{profile.phone}</a>
             <a href={`https://wa.me/${profile.phoneRaw}`} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <span style={{ color: 'var(--muted)', fontSize: '.92rem' }}>{profile.location}</span>
           </div>
         </div>

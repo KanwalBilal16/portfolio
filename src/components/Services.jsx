@@ -7,7 +7,7 @@ export default function Services() {
         <div className="head reveal">
           <span className="eyebrow">What I do</span>
           <h2>Expertise &amp; Skills</h2>
-          <p>End-to-end web solutions built with modern tools and a focus on performance, security, and clean architecture.</p>
+          <p>AI agents and automations, plus the full-stack apps they run in, built for production rather than demos.</p>
         </div>
         <div className="svc-grid">
           {services.map((s, i) => (

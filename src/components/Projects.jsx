@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { projects } from '../data'
 
 export default function Projects({ limit, heading = true, id = 'projects', framed = true }) {
@@ -20,7 +21,7 @@ export default function Projects({ limit, heading = true, id = 'projects', frame
             <div className="proj reveal" style={{ transitionDelay: `${(i % 3) * 0.05}s` }} key={p.title}>
               {p.image ? (
                 <div className="thumb">
-                  <img src={p.image} alt={p.title} />
+                  <img src={p.image} alt={p.title} loading="lazy" />
                 </div>
               ) : (
                 <div className="thumb" style={{ background: p.grad }}>
@@ -33,6 +34,9 @@ export default function Projects({ limit, heading = true, id = 'projects', frame
                 </div>
                 <h3>{p.title}</h3>
                 <p>{p.text}</p>
+                {p.caseStudy && (
+                  <Link to={`/projects/${p.slug}`} className="proj-link">View case study →</Link>
+                )}
               </div>
             </div>
           ))}

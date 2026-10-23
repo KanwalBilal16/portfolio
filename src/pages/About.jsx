@@ -13,7 +13,7 @@ export default function About() {
         <div className="wrap about-grid">
           <div className="reveal about-text">
             <span className="eyebrow">Who I am</span>
-            <h2>Full Stack Developer based in Faisalabad</h2>
+            <h2>AI Automation Engineer &amp; Full Stack Developer</h2>
             {profile.bio.map((para, i) => <p key={i}>{para}</p>)}
             <div className="about-facts">
               <div><span className="k">Experience</span><span className="v">4+ years</span></div>

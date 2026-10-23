@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
 import { profile } from '../data'
-import { MailIcon, PhoneIcon, WhatsAppIcon } from './Icons'
+import { MailIcon, PhoneIcon, WhatsAppIcon, GitHubIcon, LinkedInIcon, DownloadIcon } from './Icons'
 import { useEffect, useState } from 'react';
 
 const PHRASES = [
+  'orchestrating AI agents',
+  'wiring n8n workflows',
+  'building RAG pipelines',
   'building APIs',
   'shipping React apps',
   'tuning SQL queries',
@@ -90,7 +93,17 @@ export default function Hero() {
             <Link to="/contact" className="btn btn-ghost">Get in touch</Link>
           </div>
 
+          <div className="cv-row">
+            {profile.cvs.map((cv) => (
+              <a key={cv.file} href={cv.file} download className="cv-btn">
+                <DownloadIcon /> {cv.label}
+              </a>
+            ))}
+          </div>
+
           <div className="socials">
+            <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><GitHubIcon /></a>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><LinkedInIcon /></a>
             <a href={`mailto:${profile.email}`} aria-label="Email" title="Email"><MailIcon /></a>
             <a href={`tel:${profile.phone.replace(/\s/g, '')}`} aria-label="Phone" title="Phone"><PhoneIcon /></a>
             <a href={`https://wa.me/${profile.phoneRaw}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp"><WhatsAppIcon /></a>

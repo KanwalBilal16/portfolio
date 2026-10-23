@@ -8,6 +8,7 @@ export default function Stats() {
           <div className="stat reveal" style={{ transitionDelay: `${i * 0.06}s` }} key={s.lbl}>
             <div className="num">{s.num}</div>
             <div className="lbl">{s.lbl}</div>
+            {s.note && <div className="note">{s.note}</div>}
           </div>
         ))}
       </div>

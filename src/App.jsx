@@ -6,6 +6,8 @@ import Home from './pages/Home'
 import About from './pages/About'
 import ProjectsPage from './pages/ProjectsPage'
 import ContactPage from './pages/ContactPage'
+import CaseStudy from './pages/CaseStudy'
+import PageHead from './components/PageHead'
 
 // Re-run scroll-reveal + jump to top whenever the route changes
 function RouteEffects() {
@@ -26,10 +28,13 @@ function RouteEffects() {
 }
 
 export default function App() {
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState(() => {
+    try { return localStorage.getItem('theme') || 'dark' } catch { return 'dark' }
+  })
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
+    try { localStorage.setItem('theme', theme) } catch { /* storage unavailable */ }
   }, [theme])
 
   const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))
@@ -43,7 +48,9 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/projects/:slug" element={<CaseStudy />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<PageHead eyebrow="404" title="Page not found" subtitle="The page you're looking for doesn't exist." />} />
         </Routes>
       </main>
       <Footer />

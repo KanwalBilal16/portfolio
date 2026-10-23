@@ -1,6 +1,7 @@
-import { coreSkills, moreTools } from '../data'
+import { Link } from 'react-router-dom'
+import { skillGroups, projects } from '../data'
 
-const C = 213.6 // circumference for r=34
+const byCode = Object.fromEntries(projects.map((p) => [p.code, p]))
 
 export default function Skills() {
   return (
@@ -9,37 +10,31 @@ export default function Skills() {
         <div className="head reveal">
           <span className="eyebrow">Tech I build with</span>
           <h2>Skills &amp; Tools</h2>
-          <p>My core stack at a glance — plus the wider toolkit I reach for every day.</p>
+          <p>Grouped by what they're used for, each with projects that put them to work.</p>
         </div>
 
-        {/* animated proficiency rings */}
-        <div className="sk-grid">
-          {coreSkills.map((s, i) => (
-            <div className="sk-card reveal" style={{ transitionDelay: `${(i % 4) * 0.07}s` }} key={s.name}>
-              <div className="ring-wrap">
-                <svg className="ring" viewBox="0 0 80 80">
-                  <circle className="ring-bg" cx="40" cy="40" r="34" />
-                  <circle
-                    className="ring-fg"
-                    cx="40" cy="40" r="34"
-                    style={{ stroke: s.color, '--off': C - (C * s.level) / 100, transitionDelay: `${(i % 4) * 0.08 + 0.1}s` }}
-                  />
-                </svg>
-                <span className="ring-mono" style={{ color: s.color }}>{s.abbr}</span>
+        <div className="skg-grid">
+          {skillGroups.map((g, i) => (
+            <div className="skg reveal" style={{ transitionDelay: `${i * 0.07}s` }} key={g.title}>
+              <h3>{g.title}</h3>
+              <p className="skg-blurb">{g.blurb}</p>
+              <div className="chips">
+                {g.tools.map((t) => <span className="chip" key={t}>{t}</span>)}
               </div>
-              <div className="sk-name">{s.name}</div>
-              <div className="sk-lvl">{s.level}%</div>
+              <div className="skg-proof">
+                <span className="k">Used in</span>
+                {g.proof.map((code) => {
+                  const p = byCode[code]
+                  if (!p) return null
+                  return (
+                    <Link key={code} to={p.slug ? `/projects/${p.slug}` : '/projects'}>
+                      {p.title}{p.slug ? ' →' : ''}
+                    </Link>
+                  )
+                })}
+              </div>
             </div>
           ))}
-        </div>
-
-        {/* infinite marquee for the rest of the toolkit */}
-        <div className="marquee reveal" aria-label="More tools and technologies">
-          <div className="marquee-track">
-            {[...moreTools, ...moreTools].map((t, i) => (
-              <span className="chip" key={i}>{t}</span>
-            ))}
-          </div>
         </div>
       </div>
     </section>
